@@ -1,7 +1,7 @@
-# Bike Shop Software
+# BikeShop Software
 
 ## Descrição:
-O Bike Shop Software é uma solução abrangente para gerenciar e otimizar as operações de uma loja de bicicletas. Desenvolvido em Java e utilizando o banco de dados MySQL, o software é projetado para atender às necessidades específicas de lojas de bicicletas, proporcionando uma plataforma intuitiva e eficiente para gerenciamento de estoque, vendas e interação com os clientes.
+O BikeShop Software é uma solução abrangente para gerenciar e otimizar as operações de uma loja de bicicletas. Desenvolvido em Java e utilizando o banco de dados MySQL, o software é projetado para atender às necessidades específicas de lojas de bicicletas, proporcionando uma plataforma intuitiva e eficiente para gerenciamento de estoque, vendas e interação com os clientes.
 
 ## Funcionalidades:
 Autenticação de usuário: O software oferece um sistema de login seguro para os usuários, permitindo que funcionários autorizados acessem as funcionalidades do sistema de acordo com suas permissões.
@@ -24,4 +24,4 @@ Sistema de Vendas e Faturamento: Adicionar recursos para registrar vendas, calcu
 Integração com E-commerce: Possibilitar a integração do software com uma plataforma de e-commerce para venda de bicicletas online.
 
 ## Status atual:
-O BikeShop Manager ainda está em desenvolvimento, recebendo melhorias e refinamentos constantes. As funcionalidades básicas de login de usuário, visualização de usuário, cadastro de bicicletas e marcas, bem como a visualização de marcas com filtro de pesquisa, já estão implementadas e em pleno funcionamento. A equipe de desenvolvimento está trabalhando ativamente nas futuras atualizações e funcionalidades planejadas.
+O BikeShop ainda está em desenvolvimento, recebendo melhorias e refinamentos constantes. As funcionalidades básicas de login de usuário, visualização de usuário, cadastro de bicicletas e marcas, bem como a visualização de marcas com filtro de pesquisa, já estão implementadas e em pleno funcionamento. A equipe de desenvolvimento está trabalhando ativamente nas futuras atualizações e funcionalidades planejadas.
