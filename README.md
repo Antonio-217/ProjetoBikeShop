@@ -25,3 +25,4 @@ Integração com E-commerce: Possibilitar a integração do software com uma pla
 
 ## Status atual:
 O BikeShop ainda está em desenvolvimento, recebendo melhorias e refinamentos constantes. As funcionalidades básicas de login de usuário, visualização de usuário, cadastro de bicicletas e marcas, bem como a visualização de marcas com filtro de pesquisa, já estão implementadas e em pleno funcionamento. A equipe de desenvolvimento está trabalhando ativamente nas futuras atualizações e funcionalidades planejadas.
+
