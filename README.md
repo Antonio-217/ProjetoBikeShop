@@ -1,7 +1,7 @@
 # BikeShop Software
 
 ## Descrição:
-O BikeShop Software é uma solução abrangente para gerenciar e otimizar as operações de uma loja de bicicletas. Desenvolvido em Java e utilizando o banco de dados MySQL, o software é projetado para atender às necessidades específicas de lojas de bicicletas, proporcionando uma plataforma intuitiva e eficiente para gerenciamento de estoque, vendas e interação com os clientes.
+O BikeShop é uma solução abrangente para gerenciar e otimizar as operações de uma loja de bicicletas. Desenvolvido em Java e utilizando o banco de dados MySQL, o software é projetado para atender às necessidades específicas de lojas de bicicletas, proporcionando uma plataforma intuitiva e eficiente para gerenciamento de estoque, vendas e interação com os clientes.
 
 ## Funcionalidades:
 Autenticação de usuário: O software oferece um sistema de login seguro para os usuários, permitindo que funcionários autorizados acessem as funcionalidades do sistema de acordo com suas permissões.
