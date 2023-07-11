@@ -10,20 +10,19 @@ public class FormConsultaMarcas extends javax.swing.JFrame {
 
     //marca global
     private MarcaTableModel marcaModel;
-    
+
     //método que atualiza os dados da jtable
-    private void atualizaTabela(){
+    private void atualizaTabela() {
+        ArrayList<Marca> lista;
         if (jCBfiltro.getSelectedIndex() == 1) {
-            ArrayList<Marca> lista = BikeShopCliente.ccont.marcaListaNome(jTFpesquisa.getName());
-            marcaModel = new MarcaTableModel(lista);
-            jTable1.setModel(marcaModel);
-        } else{
-            ArrayList<Marca> lista = BikeShopCliente.ccont.marcaLista();
-            marcaModel = new MarcaTableModel(lista);
-            jTable1.setModel(marcaModel);
+            lista = BikeShopCliente.ccont.marcaListaNome(jTFpesquisa.getText());
+        } else {
+            lista = BikeShopCliente.ccont.marcaLista();  
         }
+        marcaModel = new MarcaTableModel(lista);
+            jTable1.setModel(marcaModel);
     }
-    
+
     public FormConsultaMarcas() {
         initComponents();
         atualizaTabela();
@@ -81,6 +80,11 @@ public class FormConsultaMarcas extends javax.swing.JFrame {
         jTFpesquisa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTFpesquisaActionPerformed(evt);
+            }
+        });
+        jTFpesquisa.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTFpesquisaKeyReleased(evt);
             }
         });
 
@@ -166,38 +170,40 @@ public class FormConsultaMarcas extends javax.swing.JFrame {
         //o codigo trava no setvisible pro causa do setmodal(true)
         //e só volta a executar quando o usuario fechar a tela de cadsatro
         formCadastroMarca.setVisible(true);
-        
+
         atualizaTabela();
     }//GEN-LAST:event_jBadicionarActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-       
+
         if (evt.getClickCount() == 2 && evt.getButton() == MouseEvent.BUTTON1) {
             Marca m = marcaModel.getMarca(jTable1.getSelectedRow());
             System.out.println(m);
-            
+
             FormCadastroMarca formCadastroMarca = new FormCadastroMarca(m);
             formCadastroMarca.setModal(true);
             formCadastroMarca.setVisible(true);
             atualizaTabela();
-            
+
         }
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jTFpesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFpesquisaActionPerformed
-        
-        if (!jTFpesquisa.getText().equals("")) {
-            String nome = new String(jTFpesquisa.getText());
-            BikeShopCliente.ccont.marcaListaNome(nome);
-            atualizaTabela();
-        } 
-
+        atualizaTabela();
     }//GEN-LAST:event_jTFpesquisaActionPerformed
 
+    private void jTFpesquisaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFpesquisaKeyReleased
+        atualizaTabela();
+    }//GEN-LAST:event_jTFpesquisaKeyReleased
+
     private void jCBfiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBfiltroActionPerformed
-        
-        
-        
+        atualizaTabela();
+        if (jCBfiltro.getSelectedIndex() == 0) {
+            jTFpesquisa.setText("");
+            jTFpesquisa.setEnabled(false);
+        } else{
+            jTFpesquisa.setEnabled(true);
+        }
     }//GEN-LAST:event_jCBfiltroActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

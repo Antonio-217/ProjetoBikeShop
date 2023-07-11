@@ -9,6 +9,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import modelDominio.Bike;
 import modelDominio.Marca;
 import modelDominio.Usuario;
 
@@ -45,6 +46,20 @@ public class ConexaoController {
             return null;
        }
     }
+    public ArrayList<Bike> bikeLista(){
+        String msg;
+        try {
+            //enviando o comando para o servidor 
+            //comando: MarcaLista
+            out.writeObject("BikeLista");
+            ArrayList<Bike> listabike = (ArrayList<Bike>) in.readObject();
+            return listabike;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return null;
+        }
+    }
+    
     public ArrayList<Marca> marcaLista(){
         try {
             //enviando o comando para o servidor 
@@ -64,6 +79,8 @@ public class ConexaoController {
             //enviando o comando para o servidor 
             //comando: MarcaListaNome
             out.writeObject("MarcaListaNome");
+            in.readObject();
+            out.writeObject(nome);
             /*recebendo a lista do servidor e retornando para a tela que chamar este comando*/
             return (ArrayList<Marca>) in.readObject();
             

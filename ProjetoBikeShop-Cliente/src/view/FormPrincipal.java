@@ -35,6 +35,11 @@ public class FormPrincipal extends javax.swing.JFrame {
         jBbikes.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jBbikes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/bike.png"))); // NOI18N
         jBbikes.setText("Bikes");
+        jBbikes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBbikesActionPerformed(evt);
+            }
+        });
 
         jBmarcas.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jBmarcas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/marcas.png"))); // NOI18N
@@ -103,6 +108,11 @@ public class FormPrincipal extends javax.swing.JFrame {
         FormConsultaMarcas formConsultaMarcas = new FormConsultaMarcas();
         formConsultaMarcas.setVisible(true);
     }//GEN-LAST:event_jBmarcasActionPerformed
+
+    private void jBbikesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBbikesActionPerformed
+        FormConsultaBike formConsultaBike = new FormConsultaBike();
+        formConsultaBike.setVisible(true);
+    }//GEN-LAST:event_jBbikesActionPerformed
 
     /**
      * @param args the command line arguments
