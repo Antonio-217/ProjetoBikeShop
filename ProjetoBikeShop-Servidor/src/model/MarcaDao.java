@@ -49,18 +49,17 @@ public class MarcaDao {
     }
     
     public ArrayList<Marca> getMarcaListaNome(String nome){
-        ArrayList<Marca> lista = new ArrayList<>();
         PreparedStatement stmt = null;
+        ArrayList<Marca> lista = new ArrayList<>();
         
         try {
             //com false eu tenho controle das transações
             con.setAutoCommit(false);
-            String sql = "SELECT * FROM marca WHERE nomemarca LIKE ?";
+            String sql = "select * from marca where nomemarca like ?";
             
             stmt = con.prepareStatement(sql);
-            stmt.setString(1, "%"+nome+"%");
-            stmt.executeQuery();
-            ResultSet res = stmt.executeQuery(sql);
+            stmt.setString(1, "%" + nome + "%");
+            ResultSet res = stmt.executeQuery();
             //Percorrer o resultado
             while (res.next()) {
                 //Criando um objeto de marca
@@ -68,11 +67,7 @@ public class MarcaDao {
                 //Adicionar essa marca na lista
                 lista.add(m);
                 System.out.println(m);
-            }
-            //fechando conexões dos objetos
-            res.close();
-            stmt.close();
-            con.close();
+            }           
             //efetivar a transação
             con.commit();
             

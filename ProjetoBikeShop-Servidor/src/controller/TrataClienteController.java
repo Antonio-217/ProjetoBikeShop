@@ -4,8 +4,11 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.util.ArrayList;
+import model.BikeDao;
 import model.MarcaDao;
 import model.UsuarioDao;
+import modelDominio.Bike;
 import modelDominio.Marca;
 import modelDominio.Usuario;
 
@@ -54,7 +57,12 @@ public class TrataClienteController extends Thread {
                     //iremos retornar nulo para o cliente
                     UsuarioDao usdao = new UsuarioDao();
                     out.writeObject(usdao.efetuarLogin(usr));
-                    
+                
+                } else if (comando.equalsIgnoreCase("BikeLista")) {
+                    BikeDao bkdao = new BikeDao();
+                    ArrayList<Bike> listaBike = bkdao.getLista();
+                    out.writeObject(listaBike);
+                       
                 } else if (comando.equalsIgnoreCase("MarcaLista")) {
                     MarcaDao mcdao = new MarcaDao();
                     out.writeObject(mcdao.getMarcaLista());
