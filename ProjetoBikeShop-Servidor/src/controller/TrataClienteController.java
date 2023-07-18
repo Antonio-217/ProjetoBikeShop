@@ -63,6 +63,30 @@ public class TrataClienteController extends Thread {
                     ArrayList<Bike> listaBike = bkdao.getLista();
                     out.writeObject(listaBike);
                        
+                } else if (comando.equalsIgnoreCase("BikeInserir")) {
+                    out.writeObject("ok");
+                    //esperando o objeto bike vir do cliente
+                    Bike bike = (Bike) in.readObject();
+                    //criando um Dao para armazenar no Banco
+                    BikeDao bkdao = new BikeDao();
+                    out.writeObject(bkdao.inserir(bike));
+                       
+                } else if (comando.equalsIgnoreCase("BikeAlterar")) {
+                    out.writeObject("ok");
+                    //esperando o objeto bike vir do cliente
+                    Bike bike = (Bike) in.readObject();
+                    //criando um Dao para armazenar no Banco
+                    BikeDao bkdao = new BikeDao();
+                    out.writeObject(bkdao.alterar(bike));
+                       
+                } else if (comando.equalsIgnoreCase("BikeExcluir")) {
+                    out.writeObject("ok");
+                    //esperando o objeto bike vir do cliente
+                    Bike bike = (Bike) in.readObject();
+                    //criando um Dao para armazenar no Banco
+                    BikeDao bkdao = new BikeDao();
+                    out.writeObject(bkdao.excluir(bike));
+                       
                 } else if (comando.equalsIgnoreCase("MarcaLista")) {
                     MarcaDao mcdao = new MarcaDao();
                     out.writeObject(mcdao.getMarcaLista());

@@ -55,7 +55,7 @@ public class BikeDao {
             String sql = "insert into bike (modelo, codmarca, preco, imagem, datalancamento) "
                     + " values (?,?,?,?,?)";
             stmt = con.prepareStatement(sql);
-            
+            //Substituir oa ? do script SQL
             stmt.setString(1, bk.getModelo());
             stmt.setInt(2, bk.getMarca().getCodMarca());
             stmt.setDouble(3, bk.getPreco());
@@ -63,16 +63,101 @@ public class BikeDao {
             stmt.setDate(5, new java.sql.Date(bk.getDataLancamento().getTime()));
             
             stmt.execute();
+            //efetivar a transação
             con.commit();
-            return true;
+            return true; //<- indica que deu tudo certo
             
         } catch (SQLException e) {
             try {
-                con.rollback();
+                con.rollback(); //cancelando a transação
                 e.printStackTrace();
                 return false;
             } catch (SQLException ex) {
                 ex.printStackTrace();
+                return false;
+            }
+        } finally { //isto será executado
+            try {
+                stmt.close();
+                con.setAutoCommit(true);
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+                return false;
+            }
+        }
+    }
+    
+    public boolean alterar(Bike bk){
+        //vai receber o script SQL de insert
+        PreparedStatement stmt = null;
+        try {
+            //desliga o autocommit
+            con.setAutoCommit(false);
+            //o ? será substituido pelo valor
+            String sql = "update bike set preco = ?, modelo = ?, codmarca = ?, "
+                    + " imagem = ?, datalancamento = ? "
+                    + " where codbike = ?";
+            stmt = con.prepareStatement(sql);
+            //substituir os ? do script SQL
+            stmt.setDouble(1, bk.getPreco());
+            stmt.setString(2, bk.getModelo());
+            stmt.setInt(3, bk.getMarca().getCodMarca());
+            stmt.setBytes(4, bk.getImagem());
+            stmt.setDate(5, new java.sql.Date(bk.getDataLancamento().getTime()));
+            stmt.setInt(6, bk.getCodBike());
+            //executar o SCRIPT SQL
+            stmt.execute();
+            //efetivar a transação
+            con.commit();
+            return true;
+        } catch (SQLException e) {
+            try {
+                con.rollback(); //cancelando a transação
+                return false;
+            } catch (SQLException ex) {
+                return false;
+            }
+        } finally { //isto será executado
+            try {
+                stmt.close();
+                con.setAutoCommit(true);
+                con.close();
+            } catch (SQLException e) {
+                return false;
+            }
+        }
+    }
+    
+    public boolean excluir(Bike bk){
+        //vai receber o script SQL de insert
+        PreparedStatement stmt = null;
+        try {
+            //desliga o autocommit
+            con.setAutoCommit(false);
+            //o ? será substituido pelo valor
+            String sql = "delete from bike where codbike = ?";
+            stmt = con.prepareStatement(sql);
+            //substituir os ? do script SQL
+            stmt.setInt(1, bk.getCodBike());
+            //executar o SCRIPT SQL
+            stmt.execute();
+            //efetivar a transação
+            con.commit();
+            return true;
+        } catch (SQLException e) {
+            try {
+                con.rollback(); //cancelando a transação
+                return false;
+            } catch (SQLException ex) {
+                return false;
+            }
+        } finally { //isto será executado
+            try {
+                stmt.close();
+                con.setAutoCommit(true);
+                con.close();
+            } catch (SQLException e) {
                 return false;
             }
         }
