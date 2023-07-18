@@ -59,6 +59,42 @@ public class ConexaoController {
             return null;
         }
     }
+    public boolean bikeInserir(Bike bk){
+        String msg = "";
+        try {
+            out.writeObject("BikeInserir");
+            msg = (String) in.readObject(); //lendo ok
+            out.writeObject(bk); //escrevendo a bike
+            return (boolean) in.readObject();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
+    public boolean bikeAlterar(Bike bk){
+        String msg = "";
+        try {
+            out.writeObject("BikeAlterar");
+            msg = (String) in.readObject(); //lendo ok
+            out.writeObject(bk); //escrevendo a bike
+            return (boolean) in.readObject();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
+    public boolean bikeExcluir(Bike bk){
+        String msg = "";
+        try {
+            out.writeObject("BikeExcluir");
+            msg = (String) in.readObject(); //lendo ok
+            out.writeObject(bk); //escrevendo a bike
+            return (boolean) in.readObject();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
     
     public ArrayList<Marca> marcaLista(){
         try {

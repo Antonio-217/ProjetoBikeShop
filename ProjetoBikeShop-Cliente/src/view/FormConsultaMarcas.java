@@ -6,7 +6,7 @@ import javax.swing.JOptionPane;
 import modelDominio.Marca;
 import view.util.MarcaTableModel;
 
-public class FormConsultaMarcas extends javax.swing.JFrame {
+public class FormConsultaMarcas extends javax.swing.JDialog {
 
     //marca global
     private MarcaTableModel marcaModel;
